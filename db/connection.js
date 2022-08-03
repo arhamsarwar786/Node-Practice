@@ -8,4 +8,3 @@ mongoose.connect(url, {
 }).catch(()=>{
     console.log("No Connection");
 });
-

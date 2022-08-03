@@ -1,11 +1,32 @@
 const express = require('express');
-require("./db/connection");
 const User = require('./models/user_model');
+var cron = require('node-cron');
+require("./db/connection");
 const app = express();
 
 const port = 1000;
 
 app.use(express.json());
+
+cron.schedule('*/2 1-20 1-18 1-6 7 3', () => {
+  console.log(`running ${Math.random()}`);
+},);
+
+// corn.schedule("* * * * * *",()=>{
+//   console.log("Running");
+// });
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -105,3 +126,16 @@ app.delete("/delete/:id",async (req,res)=>{
 app.listen(port, () => {
   console.log(`LocalHost is Running ${port}`);
 });
+
+
+
+function fun1(){
+  var data = 10;
+}
+
+function fun2(){
+  fun1();
+  console.log(data);
+}
+
+fun2();
