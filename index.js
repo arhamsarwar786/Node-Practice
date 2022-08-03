@@ -1,16 +1,17 @@
 const express = require('express');
 const User = require('./models/user_model');
+const path = require('path');
 var cron = require('node-cron');
 require("./db/connection");
 const app = express();
 
-const port = 1000;
-
+const port = 8000;
+app.use(express.static("public"));
 app.use(express.json());
 
-cron.schedule('*/2 1-20 1-18 1-6 7 3', () => {
-  console.log(`running ${Math.random()}`);
-},);
+// cron.schedule('*/2 1-20 1-18 1-6 7 3', () => {
+//   console.log(`running ${Math.random()}`);
+// },);
 
 // corn.schedule("* * * * * *",()=>{
 //   console.log("Running");
@@ -19,7 +20,13 @@ cron.schedule('*/2 1-20 1-18 1-6 7 3', () => {
 
 
 
-
+app.get("/test",(req,res)=>{
+  var options = {
+    root: path.join(__dirname)
+};
+  res.sendFile("test.html", options,);
+}
+);
 
 
 
@@ -129,13 +136,13 @@ app.listen(port, () => {
 
 
 
-function fun1(){
-  var data = 10;
-}
+// function fun1(){
+//   var data = 10;
+// }
 
-function fun2(){
-  fun1();
-  console.log(data);
-}
+// function fun2(){
+//   fun1();
+//   console.log(data);
+// }
 
-fun2();
+// fun2();
