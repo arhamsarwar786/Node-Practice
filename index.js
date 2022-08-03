@@ -24,7 +24,7 @@ app.get("/test",(req,res)=>{
   var options = {
     root: path.join(__dirname)
 };
-  res.sendFile("test.html", options, );
+  res.sendFile("test.html", options,);
 }
 );
 
